@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import { CartProvider } from "@/lib/CartContext";
 import { Toaster } from "@/components/ui/sonner";
 import { CartDrawer } from "@/components/CartDrawer";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           {children}
           <CartDrawer />
           <Toaster />
+          <SpeedInsights />
         </CartProvider>
       </body>
     </html>
