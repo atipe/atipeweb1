@@ -95,10 +95,10 @@ export const mockMessages = [
 ];
 
 export const mockReviews = [
-    { id: 1, author: "Ana Martínez", rating: 5, date: "Hace 2 semanas", text: "Excelente servicio. Me arreglaron la pantalla del móvil en 1 hora. Muy recomendables.", image: "" },
-    { id: 2, author: "Carlos Ruiz", rating: 5, date: "Hace 1 mes", text: "Grandes profesionales. Compré un portátil reacondicionado y funciona de maravilla.", image: "" },
-    { id: 3, author: "Elena López", rating: 4, date: "Hace 3 meses", text: "Buen trato y rápidos. El precio me pareció justo para la calidad del servicio.", image: "" },
-    { id: 4, author: "David Sánchez", rating: 5, date: "Hace 1 semana", text: "Salvaron todos los datos de mi disco duro cuando ya lo daba por perdido. ¡Gracias!", image: "" }
+    { id: 1, author: "Cliente Local", rating: 5, date: "Hace 1 semana", text: "Llevé mi portátil gaming porque no daba vídeo y en 24h encontraron el fallo en la placa. Trato de 10.", image: "" },
+    { id: 2, author: "Cliente Local", rating: 5, date: "Hace 3 semanas", text: "Rápidos, honestos y muy profesionales. Me cambiaron la pantalla del iPhone en un hueco de la mañana sin cita previa.", image: "" },
+    { id: 3, author: "Empresa Cliente", rating: 5, date: "Hace 1 mes", text: "Atención impecable en el mantenimiento de los equipos de nuestra oficina. Totalmente recomendables en Cantabria.", image: "" },
+    { id: 4, author: "Cliente Local", rating: 5, date: "Hace 2 meses", text: "Me decían que la placa estaba muerta, pero ellos hicieron microsoldadura y recuperaron todos mis datos. Los mejores.", image: "" }
 ];
 
 export interface Quote {

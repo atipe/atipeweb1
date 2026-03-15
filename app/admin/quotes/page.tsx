@@ -1,11 +1,31 @@
 "use client";
 
-import { mockQuotes } from "@/lib/data";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Search, FileText, CheckCircle, Clock, AlertCircle } from "lucide-react";
 
 export default function AdminQuotesPage() {
+    const [quotes, setQuotes] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchQuotes = async () => {
+            const { data, error } = await supabase
+                .from("quotes")
+                .select("*")
+                .order("id", { ascending: false });
+
+            if (error) {
+                console.error("Error fetching quotes:", error);
+            } else {
+                setQuotes(data || []);
+            }
+            setLoading(false);
+        };
+        fetchQuotes();
+    }, []);
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -44,7 +64,19 @@ export default function AdminQuotesPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        {mockQuotes.map((quote) => (
+                        {loading ? (
+                            <tr>
+                                <td colSpan={6} className="px-6 py-4 text-center text-muted-foreground">
+                                    Cargando presupuestos...
+                                </td>
+                            </tr>
+                        ) : quotes.length === 0 ? (
+                            <tr>
+                                <td colSpan={6} className="px-6 py-4 text-center text-muted-foreground">
+                                    No hay presupuestos registrados.
+                                </td>
+                            </tr>
+                        ) : quotes.map((quote) => (
                             <tr key={quote.id} className="border-b hover:bg-gray-50">
                                 <td className="px-6 py-4">
                                     <div className="font-medium text-slate-900">{quote.name}</div>

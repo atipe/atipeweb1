@@ -7,19 +7,52 @@ import { useState } from "react";
 import { ArrowLeft, Send, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/lib/supabase";
 
 export default function QuotePage() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsLoading(true);
-        // Simulate API call
-        setTimeout(() => {
+        setErrorMsg(null);
+
+        const formData = new FormData(e.currentTarget);
+
+        const name = formData.get("name") as string;
+        const phone = formData.get("phone") as string;
+        const email = formData.get("email") as string;
+        const device = formData.get("device") as string;
+        const description = formData.get("description") as string;
+        const urgency = formData.get("urgency") as string; // 'normal' or 'urgent'
+
+        // Map urgency back to Spanish if needed or keep as is. DB has 'Normal' or 'Urgente'
+        const urgencyLabel = urgency === "urgent" ? "Urgente" : "Normal";
+
+        const { error } = await supabase.from("quotes").insert([
+            {
+                name,
+                phone,
+                email,
+                device,
+                description,
+                urgency: urgencyLabel,
+                status: "Pendiente",
+                date: new Date().toISOString().split('T')[0] // YYYY-MM-DD
+            }
+        ]);
+
+        if (error) {
+            console.error("Error al enviar presupuesto:", error);
+            setErrorMsg("Hubo un error al enviar tu solicitud. Por favor, inténtalo de nuevo.");
             setIsLoading(false);
-            setIsSubmitted(true);
-        }, 1500);
+            return;
+        }
+
+        setIsLoading(false);
+        setIsSubmitted(true);
     };
 
     if (isSubmitted) {
@@ -66,27 +99,27 @@ export default function QuotePage() {
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Nombre Completo</label>
-                                    <input required placeholder="Ej: Juan Pérez" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                    <input name="name" required placeholder="Ej: Juan Pérez" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium">Teléfono</label>
-                                    <input required type="tel" placeholder="+34 600 000 000" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                    <input name="phone" required type="tel" placeholder="+34 600 000 000" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
                                 </div>
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">Correo Electrónico</label>
-                                <input required type="email" placeholder="juan@ejemplo.com" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                <input name="email" required type="email" placeholder="juan@ejemplo.com" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">Dispositivo / Modelo</label>
-                                <input required placeholder="Ej: iPhone 13 Pro, Portátil HP Pavilion..." className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
+                                <input name="device" required placeholder="Ej: iPhone 13 Pro, Portátil HP Pavilion..." className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all" />
                             </div>
 
                             <div className="space-y-2">
                                 <label className="text-sm font-medium">Descripción del Problema</label>
-                                <textarea required rows={4} placeholder="Describe qué le pasa al dispositivo (pantalla rota, no enciende, va lento...)" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none" />
+                                <textarea name="description" required rows={4} placeholder="Describe qué le pasa al dispositivo (pantalla rota, no enciende, va lento...)" className="w-full p-2.5 rounded-md border text-sm focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none" />
                             </div>
 
                             <div className="space-y-2">
@@ -102,6 +135,10 @@ export default function QuotePage() {
                                     </label>
                                 </div>
                             </div>
+
+                            {errorMsg && (
+                                <p className="text-sm text-red-500 font-medium text-center mt-2">{errorMsg}</p>
+                            )}
 
                             <Button type="submit" size="lg" className="w-full text-lg mt-4 h-12" disabled={isLoading}>
                                 {isLoading ? "Enviando..." : "Enviar Solicitud"} <Send className={cn("ml-2 h-4 w-4", isLoading && "hidden")} />

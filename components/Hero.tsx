@@ -8,27 +8,23 @@ export function Hero() {
             <div className="container relative z-10 flex flex-col items-center text-center">
 
                 <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-primary/10 text-primary hover:bg-primary/20 mb-6">
-                    Servicio técnico multimarca en Cantabria
+                    Tu servicio técnico en Cantabria
                 </div>
 
-                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight lg:text-7xl mb-6">
-                    ATIPE <span className="text-primary">COMPUTERS</span>
+                <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight lg:text-7xl mb-6 text-balance">
+                    Tu servicio técnico informático y móvil de <span className="text-primary">confianza en Santander.</span>
                 </h1>
 
-                <p className="text-xl md:text-2xl font-bold text-slate-900 mb-4">
-                    Reparación de Ordenadores y Móviles
-                </p>
-
-                <p className="max-w-[800px] text-lg text-muted-foreground mb-8 text-balance">
-                    Especialistas en <strong>Mac, PC, iPhone y Android</strong>. Trabajamos con todas las marcas: <strong>Apple, Samsung, Xiaomi, Huawei, Sony, PlayStation, Nintendo</strong> y más. Diagnóstico gratuito y garantía de 3 meses en todas nuestras reparaciones.
+                <p className="max-w-[800px] text-lg md:text-xl text-muted-foreground mb-8 text-balance">
+                    Reparamos tu ordenador, móvil o consola rápido, con garantía en piezas y sin sorpresas. Somos especialistas en <strong>Apple, placas base y setups gaming</strong>.
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                     <Button size="lg" className="w-full sm:w-auto text-lg h-12 px-8" asChild>
-                        <Link href="/quote">Solicitar Presupuesto Gratis</Link>
+                        <Link href="/quote">Pide presupuesto sin compromiso</Link>
                     </Button>
                     <Button variant="outline" size="lg" className="w-full sm:w-auto text-lg h-12 px-8" asChild>
-                        <Link href="#servicios">Ver Servicios</Link>
+                        <Link href="#contacto">Ver dónde estamos</Link>
                     </Button>
                 </div>
 

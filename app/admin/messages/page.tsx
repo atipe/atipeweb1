@@ -1,11 +1,31 @@
 "use client";
 
-import { mockMessages } from "@/lib/data";
+import { useEffect, useState } from "react";
+import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Search, Mail, Trash2, CheckCircle } from "lucide-react";
 
 export default function AdminMessagesPage() {
+    const [messages, setMessages] = useState<any[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchMessages = async () => {
+            const { data, error } = await supabase
+                .from("messages")
+                .select("*")
+                .order("id", { ascending: false });
+
+            if (error) {
+                console.error("Error fetching messages:", error);
+            } else {
+                setMessages(data || []);
+            }
+            setLoading(false);
+        };
+        fetchMessages();
+    }, []);
     return (
         <div className="space-y-6">
             <div className="flex items-center justify-between">
@@ -33,7 +53,11 @@ export default function AdminMessagesPage() {
             </div>
 
             <div className="grid gap-4">
-                {mockMessages.map((msg) => (
+                {loading ? (
+                    <div className="text-center text-muted-foreground py-10">Cargando mensajes...</div>
+                ) : messages.length === 0 ? (
+                    <div className="text-center text-muted-foreground py-10">No hay mensajes.</div>
+                ) : messages.map((msg) => (
                     <div key={msg.id} className={`bg-white p-4 rounded-lg border shadow-sm flex flex-col md:flex-row gap-4 items-start md:items-center ${!msg.read ? 'border-l-4 border-l-primary' : ''}`}>
                         <div className="p-2 bg-slate-100 rounded-full">
                             <Mail className={`h-5 w-5 ${!msg.read ? 'text-primary' : 'text-slate-400'}`} />

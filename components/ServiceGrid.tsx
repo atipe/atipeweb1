@@ -1,50 +1,45 @@
-import { Smartphone, Laptop, Monitor, Gamepad2, Battery, Database, HardDrive, Cpu, Globe } from "lucide-react";
+import { Smartphone, Laptop, Gamepad2, Database, Shield, Wrench, Cpu, Globe } from "lucide-react";
 
 const services = [
     {
         title: "Móviles y Tablets",
-        description: "Cambio de pantalla, batería, conector de carga. iPhone, Samsung, Xiaomi.",
+        description: "Cambio de pantalla, batería y conector. Especialistas en iPhone e iPad.",
         icon: Smartphone,
     },
     {
-        title: "Ordenadores Portátiles",
-        description: "Reparación de placa base, cambio de teclado, pantalla y mejoras SSD.",
+        title: "Portátiles y MacBooks",
+        description: "Mejoras SSD, daños por líquidos, bisagras y pantallas rotas.",
         icon: Laptop,
     },
     {
-        title: "Ordenadores de Sobremesa",
-        description: "Montaje de PCs gaming, limpieza interna, formateo y optimización.",
-        icon: Monitor,
+        title: "PCs Sobremesa y Gaming",
+        description: "Montaje a medida, limpiezas completas y solución de cuelgues.",
+        icon: Wrench,
     },
     {
         title: "Consolas",
-        description: "PlayStation, Xbox, Nintendo Switch. Problemas de HDMI, lector o temperatura.",
+        description: "PlayStation, Xbox, Switch. Mantenimiento, HDMI y limpieza térmica.",
         icon: Gamepad2,
     },
     {
-        title: "Cambio de Batería",
-        description: "Baterías originales o compatibles de alta calidad para todos los modelos.",
-        icon: Battery,
-    },
-    {
-        title: "Recuperación de Datos",
-        description: "Recuperamos tus fotos y documentos de discos duros dañados o móviles mojados.",
-        icon: Database,
-    },
-    {
-        title: "Ampliaciones",
-        description: "Mejora la velocidad de tu equipo con discos SSD y más memoria RAM.",
-        icon: HardDrive,
-    },
-    {
         title: "Microsoldadura",
-        description: "Reparaciones avanzadas de placa base a nivel de componente.",
+        description: "Rescatamos chips y placas base. Si tiene arreglo, lo soldamos.",
         icon: Cpu,
     },
     {
-        title: "Soporte Remoto Online",
-        description: "Solución de problemas de software y configuración a distancia sin moverte de casa.",
+        title: "Recuperación de Datos",
+        description: "Recuperación de discos duros dañados, USBs o móviles muertos.",
+        icon: Database,
+    },
+    {
+        title: "Soporte Remoto",
+        description: "Solución de incidencias al instante sin necesidad de desplazamientos.",
         icon: Globe,
+    },
+    {
+        title: "Mantenimiento a Empresas",
+        description: "Soporte preventivo, redes y seguridad para que tu negocio no pare.",
+        icon: Shield,
     },
 ];
 
@@ -53,9 +48,9 @@ export function ServiceGrid() {
         <section id="servicios" className="py-20 bg-white">
             <div className="container">
                 <div className="text-center max-w-2xl mx-auto mb-16">
-                    <h2 className="text-3xl font-bold tracking-tight mb-4">Servicios Profesionales</h2>
+                    <h2 className="text-3xl font-bold tracking-tight mb-4">¿Qué podemos arreglar hoy?</h2>
                     <p className="text-muted-foreground text-lg">
-                        Cubrimos todas tus necesidades tecnológicas con un servicio rápido, transparente y garantizado.
+                        Nuestros técnicos especialistas están preparados para cualquier desafío. Selecciona tu dispositivo.
                     </p>
                 </div>
 

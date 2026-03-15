@@ -20,39 +20,47 @@ export default function Home() {
       <Hero />
       <ProductSlideshow />
 
-      {/* Informática Store Info */}
+      {/* Por qu&eacute; elegirnos */}
       <section className="py-16 bg-slate-50 border-y border-slate-200">
         <div className="container">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">También somos <span className="text-primary">Tu Tienda de Informática</span></h2>
+            <h2 className="text-3xl md:text-5xl font-black uppercase mb-4">Por qu&eacute; cientos de clientes conf&iacute;an en <span className="text-primary">Atipe</span></h2>
             <p className="text-slate-600 text-lg max-w-3xl mx-auto italic">
-              "Venta de todo tipo de componentes, periféricos, accesorios y consumibles con stock real y envío 24h a toda España."
+              "No somos solo una tienda de inform&aacute;tica, somos tu socio tecnol&oacute;gico en Santander."
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
-              <div className="bg-primary/10 p-4 rounded-full text-primary mb-6">
-                <PackageCheck size={32} />
-              </div>
-              <h3 className="font-bold text-xl mb-2">Todo en Tecnología</h3>
-              <p className="text-slate-500">Portátiles, PCs a medida, periféricos (teclados, ratones, monitores) y accesorios de todas las marcas.</p>
-            </div>
-
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
               <div className="bg-primary/10 p-4 rounded-full text-primary mb-6">
                 <Zap size={32} />
               </div>
-              <h3 className="font-bold text-xl mb-2">Stock 24h</h3>
-              <p className="text-slate-500">Disponibilidad inmediata en miles de productos. Si lo necesitas hoy, lo tenemos hoy.</p>
+              <h3 className="font-bold text-xl mb-2">Diagn&oacute;stico Preciso</h3>
+              <p className="text-slate-500">Te explicamos el problema siempre antes de tocar nada. Cero sorpresas en tu presupuesto.</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-4 rounded-full text-primary mb-6">
+                <PackageCheck size={32} />
+              </div>
+              <h3 className="font-bold text-xl mb-2">Garant&iacute;a Total</h3>
+              <p className="text-slate-500">Piezas de alta calidad y garant&iacute;a en cada reparaci&oacute;n para tu total tranquilidad.</p>
             </div>
 
             <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
               <div className="bg-primary/10 p-4 rounded-full text-primary mb-6">
                 <Truck size={32} />
               </div>
-              <h3 className="font-bold text-xl mb-2">Venta Nacional</h3>
-              <p className="text-slate-500">Envíos rápidos a cualquier punto de España. Compra con confianza y garantía total.</p>
+              <h3 className="font-bold text-xl mb-2">Aver&iacute;as Complejas</h3>
+              <p className="text-slate-500">Resolvemos lo que otros no pueden: microsoldadura, recuperaci&oacute;n de datos y fallos en placa base.</p>
+            </div>
+
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+              <div className="bg-primary/10 p-4 rounded-full text-primary mb-6">
+                <ShoppingBag size={32} />
+              </div>
+              <h3 className="font-bold text-xl mb-2">Tiempos R&eacute;cord</h3>
+              <p className="text-slate-500">Gran stock de repuestos para que no te quedes sin tu herramienta de trabajo o juego.</p>
             </div>
           </div>
         </div>
@@ -68,15 +76,22 @@ export default function Home() {
       {/* Short CTA Section */}
       <section className="py-20 bg-slate-900 text-white text-center">
         <div className="container">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">¿Tu dispositivo no funciona?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">¿No puedes acercarte a la tienda? Te lo ponemos f&aacute;cil</h2>
           <p className="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
-            No pierdas tiempo. Tráelo a Atipe Computers y te daremos una solución rápida y económica.
+            Ven a vernos a nuestras instalaciones, escr&iacute;benos por WhatsApp o solicita recogida directa si est&aacute;s fuera de Santander.
           </p>
-          <Button size="lg" className="text-lg font-bold py-6 px-10 rounded-xl" asChild>
-            <a href="https://wa.me/34630606016" target="_blank" rel="noopener noreferrer">
-              Contactar por WhatsApp
-            </a>
-          </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="text-lg font-bold py-6 px-10 rounded-xl" asChild>
+              <a href="https://wa.me/34630606016" target="_blank" rel="noopener noreferrer">
+                Habla ahora por WhatsApp
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg font-bold py-6 px-10 rounded-xl bg-transparent border-white text-white hover:bg-white/10 hover:text-white" asChild>
+              <a href="#contacto">
+                Ver Direcci&oacute;n y Horarios
+              </a>
+            </Button>
+          </div>
         </div>
       </section>
 

@@ -84,4 +84,21 @@ INSERT INTO `quotes` (`id`, `name`, `email`, `phone`, `device`, `description`, `
 (1, 'Manuel García', 'manuel@test.com', '600123456', 'iPad Air 4', 'Pantalla rota, no funciona el táctil en la esquina superior.', 'Normal', 'Pendiente', '2024-12-20'),
 (2, 'Sofía Martín', 'sofia@test.com', '610987654', 'PC Sobremesa', 'Hace mucho ruido el ventilador y se apaga solo.', 'Urgente', 'Contactado', '2024-12-19');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `messages`
+--
+
+CREATE TABLE `messages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `message` text NOT NULL,
+  `date` date NOT NULL DEFAULT CURRENT_DATE,
+  `read` boolean NOT NULL DEFAULT FALSE,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 COMMIT;

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 export function ContactSection() {
     const [formData, setFormData] = useState({
@@ -12,9 +13,25 @@ export function ContactSection() {
         message: "",
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        alert("Mensaje enviado correctamente (Simulación)");
+
+        const { error } = await supabase.from("messages").insert([
+            {
+                name: formData.name,
+                email: formData.email,
+                type: formData.type,
+                message: formData.message
+            }
+        ]);
+
+        if (error) {
+            console.error("Error al enviar el mensaje:", error);
+            alert("Hubo un error al enviar tu mensaje. Inténtalo de nuevo.");
+            return;
+        }
+
+        alert("Mensaje enviado correctamente");
         setFormData({ name: "", email: "", type: "Contacto", message: "" });
     };
 
